@@ -1,0 +1,120 @@
+.main {
+    width: 20%;
+    margin: 10px auto;
+}
+
+.card-image {
+    max-width: 100%;
+    max-height: 50%;
+}
+
+.carousel {
+    border: 2px solid #ccc;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider {
+    height: 100%;
+    display: flex;
+    width: 300%;
+    border: 1px solid red;
+    transition: all 0.3s;
+}
+
+.card {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.card-text {
+    align-content: center;
+}
+
+.controls .arrow {
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+}
+
+.controls ul {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+
+}
+
+.controls ul li {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #333;
+    border-radius: 50px;
+    margin: 10px;
+    background-color: #333;
+    cursor: pointer;
+}
+
+.controls ul li.selected {
+    background-color: transparent;
+}
+
+.arrow.right {
+    right: 10px
+}
+
+.arrow.left {
+    left: 10px
+}
+
+
+.MultiCarousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.MultiCarousel .MultiCarousel-inner {
+    transition: 1s ease all;
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item {
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item>div {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background: #f1f1f1;
+    color: #666;
+}
+
+.MultiCarousel .leftLst,
+.MultiCarousel .rightLst {
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 20px);
+}
+
+.MultiCarousel .leftLst {
+    left: 0;
+}
+
+.MultiCarousel .rightLst {
+    right: 0;
+}
+
+.MultiCarousel .leftLst.over,
+.MultiCarousel .rightLst.over {
+    pointer-events: none;
+    background: #ccc;
+}
