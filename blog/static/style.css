@@ -28,8 +28,8 @@
     text-align: center;
 }
 .card-with-marked-item {
-    display: flex;
-    
+    display: block;
+
 }
 
 .card-text {
