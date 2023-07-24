@@ -1,5 +1,5 @@
 .main {
-    width: 20%;
+    max-width: 20%;
     margin: 10px auto;
 }
 
@@ -23,17 +23,21 @@
     transition: all 0.3s;
 }
 
-.card {
+.standard-card {
     flex-basis: 100%;
     text-align: center;
 }
-.card-with-marked-item {
+.irregular-card {
     display: block;
 
 }
 
 .card-text {
     align-content: center;
+}
+.card-title {
+    align-content: center;
+
 }
 
 .controls .arrow {

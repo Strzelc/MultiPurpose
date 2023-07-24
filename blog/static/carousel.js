@@ -8,7 +8,7 @@ var SectionIndex = 0;
 
 function CreateOneSliderPanel(cardImageSource,cardTitleText,cardTextText) {
     const card = document.createElement("div");
-    card.classList.add("card"); 
+    card.classList.add("standard-card"); 
     
     const cardImage = document.createElement("img");
     cardImage.setAttribute("src",cardImageSource);
@@ -64,6 +64,10 @@ let testSliderCardsRequest = [
     [ImgsRootPath+"cookie.jpg", "Ciasteczko", "Pyszne ciasteczko. Prosto z pieca"],
     [ImgsRootPath+"apple.jpg", "Jabłko", "Owoc pełen witamin"]
 ];
+
+
+
+
 CreateSliderPanels(testSliderCardsRequest);
 slider.style.width=100*(slider.children.length)+'%';
 CreateNavigationDots();
