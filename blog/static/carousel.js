@@ -1,4 +1,5 @@
 const ImgsRootPath = "../static/images/"
+const APIurl = "http://127.0.0.1:8000/blog/API";
 const slider = document.querySelector('.slider');
 const leftArrow = document.querySelector('.left');
 const rightArrow = document.querySelector('.right');
@@ -40,11 +41,12 @@ function CreateSliderPanels(cardsProperties) {
             slider.appendChild(card);
         });
     }
+    slider.style.width=100*(slider.children.length)+'%';
 }
 
 function CreateNavigationDots(ReqDotsNum) {
     var DotsNum = (ReqDotsNum == null) ? slider.children.length : ReqDotsNum;
-    console.log(DotsNum);
+    //console.log(DotsNum);
     for(let i =0;i<DotsNum;i++){
         const Dot = document.createElement("li");
         indicatorParents.appendChild(Dot);
@@ -65,13 +67,20 @@ let testSliderCardsRequest = [
     [ImgsRootPath+"apple.jpg", "Jabłko", "Owoc pełen witamin"]
 ];
 
+function LoadCarousel() {
+    fetch(APIurl)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+        //console.log(data.imageSrc,data.cardTitle,data.cardText);
+        CreateSliderPanels(data);
+        CreateNavigationDots();
+        setIndex();
+    })
+};
 
-
-
-CreateSliderPanels(testSliderCardsRequest);
-slider.style.width=100*(slider.children.length)+'%';
-CreateNavigationDots();
-setIndex();
+LoadCarousel();
 
 rightArrow.addEventListener('click',function() {
     SectionIndex = (SectionIndex < slider.children.length-1) ? SectionIndex + 1 : 0;
