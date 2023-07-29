@@ -1,6 +1,6 @@
-.main {
-    max-width: 20%;
-    margin: 10px auto;
+.main-wrapper {
+    margin: 0;
+    padding: 0;
 }
 
 .card-image {
@@ -9,6 +9,8 @@
 }
 
 .carousel {
+    max-width: 20%;
+    margin: 10px auto;
     border: 2px solid #ccc;
     height: 400px;
     position: relative;
@@ -78,4 +80,19 @@
 
 .arrow.left {
     left: 10px
+}
+
+.sign-in-container {
+    background-color: aqua;
+    border: 2px solid rgb(7, 50, 190);
+}
+
+.login-container {
+    align-content: center;
+    margin:10px
+}
+
+.password-container {
+    align-content: center;
+    margin:10px
 }

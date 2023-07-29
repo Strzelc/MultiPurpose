@@ -12,6 +12,9 @@ def home(request):
 def productSearching(request):
     return render(request,'productSearching.html')
 
+def login(request):
+    return render(request,'login.html')
+
 @api_view(['GET'])
 def GetCardData(request):
     card =  [

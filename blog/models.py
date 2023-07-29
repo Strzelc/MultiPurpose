@@ -5,3 +5,9 @@ class Card(models.Model):
     imageSrc = models.CharField(max_length=30)
     cardTitle = models.CharField(max_length=30)
     cardText = models.CharField(max_length=30)
+
+class User(models.Model):
+    login = models.TextField()
+    password = models.TextField()
+    #history = models.ManyToManyField()
+

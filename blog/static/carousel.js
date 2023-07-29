@@ -61,25 +61,21 @@ function setIndex(){
     indicatorParents.children[SectionIndex].classList.add('selected');
 }
 
-let testSliderCardsRequest = [
-    [ImgsRootPath+"pizza.jpg", "Pizza Margarrito", "Magda Gessler poleca"],
-    [ImgsRootPath+"cookie.jpg", "Ciasteczko", "Pyszne ciasteczko. Prosto z pieca"],
-    [ImgsRootPath+"apple.jpg", "Jabłko", "Owoc pełen witamin"]
-];
-
 function LoadCarousel() {
     fetch(APIurl)
     .then((response) => {
-      return response.json();
+        _response = (response.ok!=true) ? response : null;
+      return _response.json();
     })
     .then((data) => {
-        //console.log(data.imageSrc,data.cardTitle,data.cardText);
         CreateSliderPanels(data);
         CreateNavigationDots();
         setIndex();
     })
 };
 
+/////////////////////////////////
+//Execution starts here
 LoadCarousel();
 
 rightArrow.addEventListener('click',function() {
