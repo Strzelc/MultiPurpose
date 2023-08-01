@@ -89,13 +89,12 @@ WSGI_APPLICATION = 'storefront.wsgi.application'
 DATABASES = {
      "default": {
         "ENGINE": "mssql",
-        "NAME": "DESKTOP-VDEV4N0",
-        "USER": "DESKTOP-VDEV4N0\jakub",
-        "PASSWORD": "",
+        "NAME": "MultiPurpose",
+        "USER": "MultiPurpose",
+        "PASSWORD": "^3$1b497Cw$e",
         "HOST": "HOST_ADDRESS",
         "PORT": "1433",
-        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
-        },
+        "OPTIONS": {},
     },
 }
 
