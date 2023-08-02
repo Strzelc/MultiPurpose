@@ -64,8 +64,7 @@ function setIndex(){
 function LoadCarousel() {
     fetch(APIurl)
     .then((response) => {
-        _response = (response.ok!=true) ? response : null;
-      return _response.json();
+      return (response.ok==true) ? response.json() : null;
     })
     .then((data) => {
         CreateSliderPanels(data);

@@ -88,14 +88,10 @@ WSGI_APPLICATION = 'storefront.wsgi.application'
 
 DATABASES = {
      "default": {
-        "ENGINE": "mssql",
-        "NAME": "MultiPurpose",
-        "USER": "MultiPurpose",
-        "PASSWORD": "^3$1b497Cw$e",
-        "HOST": "HOST_ADDRESS",
-        "PORT": "1433",
-        "OPTIONS": {},
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+    
 }
 
 
