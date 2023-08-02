@@ -92,9 +92,7 @@ DATABASES = {
         "NAME": "MultiPurpose",
         "USER": "MultiPurpose",
         "PASSWORD": "^3$1b497Cw$e",
-        "HOST": "HOST_ADDRESS",
-        "PORT": "1433",
-        "OPTIONS": {},
+        "HOST": "",
     },
 }
 
