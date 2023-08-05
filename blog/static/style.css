@@ -1,6 +1,34 @@
 .main-wrapper {
     margin: 0;
     padding: 0;
+    
+}
+
+.home-wrapper {
+    box-sizing: border-box;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f1f1f1;
+}
+
+.home-left-side {
+    float: left;
+    width: 75%;
+}
+
+.home-right-side {
+    float: left;
+    width: 75%;
 }
 
 .card-image {
@@ -29,6 +57,7 @@
     flex-basis: 100%;
     text-align: center;
 }
+
 .irregular-card {
     display: block;
 
@@ -37,6 +66,7 @@
 .card-text {
     align-content: center;
 }
+
 .card-title {
     align-content: center;
 
@@ -89,10 +119,10 @@
 
 .login-container {
     align-content: center;
-    margin:10px
+    margin: 10px
 }
 
 .password-container {
     align-content: center;
-    margin:10px
+    margin: 10px
 }

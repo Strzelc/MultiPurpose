@@ -9,7 +9,7 @@ var SectionIndex = 0;
 
 function CreateOneSliderPanel(cardImageSource,cardTitleText,cardTextText) {
     const card = document.createElement("div");
-    card.classList.add("standard-card"); 
+    card.classList.add("standard-card");  
     
     const cardImage = document.createElement("img");
     cardImage.setAttribute("src",cardImageSource);
