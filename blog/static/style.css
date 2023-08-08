@@ -1,24 +1,24 @@
 .main-wrapper {
     margin: 0;
     padding: 0;
-    
 }
 
-.home-wrapper {
+.home-main-wrapper {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    padding: 20px;
+    background: #918f8f;
+}
+
+* {
     box-sizing: border-box;
 }
 
 .row:after {
     content: "";
     display: table;
-    clear: both;
-}
-
-
-body {
-    font-family: Arial;
-    padding: 20px;
-    background: #f1f1f1;
+    clear: both;    
 }
 
 .home-left-side {
@@ -28,7 +28,8 @@ body {
 
 .home-right-side {
     float: left;
-    width: 75%;
+    width: 25%;
+    padding-left: 20px;
 }
 
 .card-image {
@@ -53,6 +54,12 @@ body {
     transition: all 0.3s;
 }
 
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
 .standard-card {
     flex-basis: 100%;
     text-align: center;
@@ -60,7 +67,6 @@ body {
 
 .irregular-card {
     display: block;
-
 }
 
 .card-text {
@@ -69,7 +75,6 @@ body {
 
 .card-title {
     align-content: center;
-
 }
 
 .controls .arrow {
@@ -87,7 +92,6 @@ body {
     display: flex;
     padding: 0;
     margin: 0;
-
 }
 
 .controls ul li {
