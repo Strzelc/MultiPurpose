@@ -46,7 +46,6 @@ function CreateSliderPanels(cardsProperties) {
 
 function CreateNavigationDots(ReqDotsNum) {
     var DotsNum = (ReqDotsNum == null) ? slider.children.length : ReqDotsNum;
-    //console.log(DotsNum);
     for(let i =0;i<DotsNum;i++){
         const Dot = document.createElement("li");
         indicatorParents.appendChild(Dot);

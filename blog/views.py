@@ -16,10 +16,14 @@ def login(request):
     return render(request,'login.html')
 
 @api_view(['GET'])
-def GetCardData(request):
+def getCardData(request):
     card =  [
     [ImgsRootPath+"pizza.jpg", "Pizza Margarrito", "Magda Gessler poleca"],
     [ImgsRootPath+"cookie.jpg", "Ciasteczko", "Pyszne ciasteczko. Prosto z pieca"],
     [ImgsRootPath+"apple.jpg", "Jabłko", "Owoc pełen witamin"]
     ]
     return Response(card)
+@api_view(['POST'])
+def searchForProduct(request):
+    
+    return Response
