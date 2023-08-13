@@ -1,5 +1,5 @@
 const ImgsRootPath = "../static/images/"
-const APIurl = "http://127.0.0.1:8000/blog/API";
+const APIurl = "http://127.0.0.1:8000/blog/API/carousel";
 const slider = document.querySelector('.slider');
 const leftArrow = document.querySelector('.left');
 const rightArrow = document.querySelector('.right');

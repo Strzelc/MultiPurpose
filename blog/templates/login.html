@@ -6,14 +6,17 @@
         <h1></h1>
         <div class="main-wrapper">
             <div class="sign-in-container">
-                <div class="login-container">
-                    <label for="">Login</label>
-                    <input type="text" name="" id="input-login">
-                </div>
-                <div class="password-container"> 
-                    <label for="">Password</label>
-                    <input type="text" name="" id="input-password">
-                </div>
+                <form action="http://127.0.0.1:8000/blog/API/Login" method="POST">
+                    <div class="login-container">
+                        <label for="">Login</label>
+                        <input type="text" name="input-login" id="input-login">
+                    </div>
+                    <div class="password-container"> 
+                        <label for="">Password</label>
+                        <input type="text" name="input-password" id="input-password">
+                    </div>
+                    <button type="submit">Send my greetings</button>
+                </form>
             </div>
         </div>
 

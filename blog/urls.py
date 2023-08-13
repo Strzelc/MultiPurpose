@@ -7,5 +7,6 @@ urlpatterns = [
     path('Login',views.login),
     path('API/carousel',views.getCardData),
     path('API/productSearch',views.searchForProduct),
-    
+    path('API/Registration', views.RegisterUser),
+    path('API/Login', views.SearchForUser),
 ]

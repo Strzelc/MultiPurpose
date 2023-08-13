@@ -7,6 +7,7 @@ class Card(models.Model):
     cardText = models.CharField(max_length=30)
 
 class User(models.Model):
+    id_user=models.BigAutoField(primary_key=True)
     login = models.TextField()
     password = models.TextField()
     #history = models.ManyToManyField()
