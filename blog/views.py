@@ -28,14 +28,9 @@ def getCardData(request):
     return Response(card)
 @api_view(['POST'])
 def searchForProduct(request):
-    body = request.body
-    data = {}
-    try:
-        data=json.loads(body)
-    except:
-        pass
-    
-    return JsonResponse()
+    if (request.method=='POST'):
+        params = request.POST    
+    return Response()
 
 @api_view(['POST'])
 def SearchForUser(request):
@@ -45,7 +40,7 @@ def SearchForUser(request):
         if user is not None:
             return Response("OK")
         else:
-            return Response("Bad password or username "+str(request.POST.get('input-login',False))+" "+str(request.POST.get('input-password',False)))
+            return Response("Bad password or username. Login: "+str(request.POST.get('input-login',False))+" , Password: "+str(request.POST.get('input-password',False)))
             
     
 @api_view(['POST'])
@@ -54,3 +49,6 @@ def RegisterUser(request):
         params = request.POST
         user = User.objects.create_user(request.POST.get('username',False), request.POST.get('email',False), request.POST.get('password',False))
         user.save()
+        return Response("OK")
+    else:
+        return Response("Bad request")

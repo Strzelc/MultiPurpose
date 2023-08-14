@@ -6,7 +6,8 @@
         <h1></h1>
         <div class="main-wrapper">
             <div class="sign-in-container">
-                <form action="http://127.0.0.1:8000/blog/API/Login" method="POST">
+                <iframe name="dummyFrame" id="dummyFrame" style="display: none;"></iframe>
+                <form action="http://127.0.0.1:8000/blog/API/Login" method="POST" target="dummyframe">
                     <div class="login-container">
                         <label for="">Login</label>
                         <input type="text" name="input-login" id="input-login">
@@ -15,7 +16,7 @@
                         <label for="">Password</label>
                         <input type="text" name="input-password" id="input-password">
                     </div>
-                    <button type="submit">Send my greetings</button>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </div>

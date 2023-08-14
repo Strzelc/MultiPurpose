@@ -30,7 +30,7 @@ function CreateOneSliderPanel(cardImageSource,cardTitleText,cardTextText) {
 
 }
 
-function CreateSliderPanels(cardsProperties) {
+function createSliderPanels(cardsProperties) {
     if(cardsProperties==null) {
         const card = CreateOneSliderPanel(ImgsRootPath + "default.jpg","Title","Lorem ipsum");
         slider.appendChild(card);
@@ -44,7 +44,7 @@ function CreateSliderPanels(cardsProperties) {
     slider.style.width=100*(slider.children.length)+'%';
 }
 
-function CreateNavigationDots(ReqDotsNum) {
+function createNavigationDots(ReqDotsNum) {
     var DotsNum = (ReqDotsNum == null) ? slider.children.length : ReqDotsNum;
     for(let i =0;i<DotsNum;i++){
         const Dot = document.createElement("li");
@@ -60,21 +60,21 @@ function setIndex(){
     indicatorParents.children[SectionIndex].classList.add('selected');
 }
 
-function LoadCarousel() {
+function loadCarousel() {
     fetch(APIurl)
     .then((response) => {
       return (response.ok) ? response.json() : null
     })
     .then((data) => {
-        CreateSliderPanels(data);
-        CreateNavigationDots();
+        createSliderPanels(data);
+        createNavigationDots();
         setIndex();
     })
 };
 
 /////////////////////////////////
 //Execution starts here
-LoadCarousel();
+loadCarousel();
 
 rightArrow.addEventListener('click',function() {
     SectionIndex = (SectionIndex < slider.children.length-1) ? SectionIndex + 1 : 0;
