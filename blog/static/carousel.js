@@ -1,9 +1,10 @@
 const ImgsRootPath = "../static/images/"
 const APIurl = "http://127.0.0.1:8000/blog/API/carousel";
-const slider = document.querySelector('.slider');
-const leftArrow = document.querySelector('.left');
-const rightArrow = document.querySelector('.right');
-var indicatorParents = document.querySelector('.controls ul') ; 
+const Carousel = document.querySelector('.carousel');
+var Slider=document.createElement("div");
+var LeftArrow =document.createElement("span");
+var RightArrow =document.createElement("span");
+var NavigationDots =document.createElement("ul");
 var SectionIndex = 0;
 
 
@@ -33,22 +34,23 @@ function CreateOneSliderPanel(cardImageSource,cardTitleText,cardTextText) {
 function createSliderPanels(cardsProperties) {
     if(cardsProperties==null) {
         const card = CreateOneSliderPanel(ImgsRootPath + "default.jpg","Title","Lorem ipsum");
-        slider.appendChild(card);
+        Slider.appendChild(card);
     }
     else {
         cardsProperties.forEach(element => {
             const card = CreateOneSliderPanel(element[0],element[1],element[2]);
-            slider.appendChild(card);
+            Slider.appendChild(card);
         });
     }
-    slider.style.width=100*(slider.children.length)+'%';
+    Slider.style.width=100*(Slider.children.length)+'%';
 }
 
 function createNavigationDots(ReqDotsNum) {
-    var DotsNum = (ReqDotsNum == null) ? slider.children.length : ReqDotsNum;
+    var DotsNum = (ReqDotsNum == null) ? Slider.children.length : ReqDotsNum;
     for(let i =0;i<DotsNum;i++){
-        const Dot = document.createElement("li");
-        indicatorParents.appendChild(Dot);
+        const dot = document.createElement("li");
+        dot.classList.add("controls"); 
+        NavigationDots.appendChild(dot);
     }
 } 
 
@@ -56,11 +58,32 @@ function setIndex(){
     var selectedDot = document.querySelector('.controls .selected');
     if(selectedDot!=null) 
         selectedDot.classList.remove('selected');
-    slider.style.transform = 'translate(' + (SectionIndex) * - ( 100 / slider.children.length) + '%)';
-    indicatorParents.children[SectionIndex].classList.add('selected');
+    Slider.style.transform = 'translate(' + (SectionIndex) * - ( 100 / Slider.children.length) + '%)';
+    NavigationDots.children[SectionIndex].classList.add('selected');
 }
 
 function loadCarousel() {
+    Slider.classList.add("slider"); 
+    Carousel.appendChild(Slider);
+
+    const navControls=document.createElement("div");
+    navControls.classList.add("controls"); 
+    Carousel.appendChild(navControls);
+
+    
+    
+    LeftArrow.classList.add("arrow","left");
+    LeftArrow.innerHTML="Left";
+    navControls.appendChild(LeftArrow);
+
+    
+    RightArrow.classList.add("arrow","right");
+    RightArrow.innerHTML="Right";
+    navControls.appendChild(RightArrow);
+
+
+    navControls.appendChild(NavigationDots);
+    
     fetch(APIurl)
     .then((response) => {
       return (response.ok) ? response.json() : null
@@ -76,19 +99,20 @@ function loadCarousel() {
 //Execution starts here
 loadCarousel();
 
-rightArrow.addEventListener('click',function() {
-    SectionIndex = (SectionIndex < slider.children.length-1) ? SectionIndex + 1 : 0;
+RightArrow.addEventListener('click',function() {
+    SectionIndex = (SectionIndex < Slider.children.length-1) ? SectionIndex + 1 : 0;
     setIndex();
 });
 
-leftArrow.addEventListener('click',function() {
-    SectionIndex = (SectionIndex > 0) ? SectionIndex - 1 : slider.children.length-1;
+LeftArrow.addEventListener('click',function() {
+    SectionIndex = (SectionIndex > 0) ? SectionIndex - 1 : Slider.children.length-1;
     setIndex();
 });
 
-document.querySelectorAll('.controls li').forEach(function(indicator,ind) {
+[...document.getElementsByClassName("controls")[0].getElementsByTagName("li")].forEach(function(indicator,ind) {
+    console.log("Yo");
     indicator.addEventListener('click', function() {
         SectionIndex=ind;
         setIndex();
     });
-})
+});
