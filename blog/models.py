@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 class Card(models.Model):
-    imageSrc = models.CharField(max_length=30)
-    cardTitle = models.CharField(max_length=30)
-    cardText = models.CharField(max_length=30)
+    image_source = models.CharField(max_length=30)
+    card_title = models.CharField(max_length=30)
+    card_text = models.CharField(max_length=30)
 
 class User(models.Model):
     id_user=models.BigAutoField(primary_key=True)
@@ -12,3 +12,9 @@ class User(models.Model):
     password = models.TextField()
     #history = models.ManyToManyField()
 
+class Product(models.Model):
+    id_product=models.BigAutoField(primary_key=True)
+    name=models.TextField()
+    description=models.TextField()
+    image_source=models.TextField()
+    price=models.IntegerField()
