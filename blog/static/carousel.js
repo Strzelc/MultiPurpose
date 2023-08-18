@@ -92,6 +92,12 @@ function loadCarousel() {
         createSliderPanels(data);
         createNavigationDots();
         setIndex();
+        [...document.getElementsByClassName("controls")[0].getElementsByTagName("li")].forEach(function(indicator,ind) {
+            indicator.addEventListener('click', function() {
+                SectionIndex=ind;
+                setIndex();
+            });
+        });
     })
 };
 
@@ -107,12 +113,4 @@ RightArrow.addEventListener('click',function() {
 LeftArrow.addEventListener('click',function() {
     SectionIndex = (SectionIndex > 0) ? SectionIndex - 1 : Slider.children.length-1;
     setIndex();
-});
-
-[...document.getElementsByClassName("controls")[0].getElementsByTagName("li")].forEach(function(indicator,ind) {
-    console.log("Yo");
-    indicator.addEventListener('click', function() {
-        SectionIndex=ind;
-        setIndex();
-    });
 });
