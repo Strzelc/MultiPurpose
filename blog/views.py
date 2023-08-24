@@ -1,10 +1,12 @@
 import json
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from .forms import ProductSearchForm
+from .models import Product
 
 ImgsRootPath = "../static/images/"
 
@@ -29,11 +31,20 @@ def getCardData(request):
 @api_view(['POST'])
 def searchForProduct(request):
     if (request.method=='POST'):
-        params = request.POST    
-    return Response()
+        form = ProductSearchForm(request.POST)
+    return Response(str(form.data['input-product-name']))
 
 @api_view(['POST'])
-def SearchForUser(request):
+def addProduct(request):
+    if (request.method=='POST'):
+        form = ProductSearchForm(request.POST)
+        #input-product-
+        newRecord=Product(name=form.data['input-product-name'],description=form.data['input-product-description'],price=form.data['input-product-price'],image_source=form.data['input-product-image-source'])
+        newRecord.save()
+    return HttpResponseRedirect("../blog/Search")
+
+@api_view(['POST'])
+def searchForUser(request):
     if (request.method=='POST'):
         params = request.POST
         user = authenticate(username=request.POST.get('input-login',False),password=request.POST.get('input-password',False))
@@ -44,7 +55,7 @@ def SearchForUser(request):
             
     
 @api_view(['POST'])
-def RegisterUser(request):
+def registerUser(request):
     if(request.method=='POST'):
         params = request.POST
         user = User.objects.create_user(request.POST.get('username',False), request.POST.get('email',False), request.POST.get('password',False))
