@@ -1,4 +1,4 @@
-APIurl = "http://127.0.0.1:8000/blog/API/productSearch";
+APIurl = "http://127.0.0.1:8000/API/productSearch";
 
 function searchForProduct() {
   
