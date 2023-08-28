@@ -20,10 +20,12 @@ def getCardData(request):
     [ImgsRootPath+"apple.jpg", "Jabłko", "Owoc pełen witamin"]
     ]
     return Response(card)
+
 @api_view(['POST'])
 def searchForProduct(request):
     if (request.method=='POST'):
         form = ProductSearchForm(request.POST)
+        
     return Response(str(form.data['input-product-name']))
 
 @api_view(['POST'])
@@ -33,7 +35,7 @@ def addProduct(request):
         #input-product-
         newRecord=Product(name=form.data['input-product-name'],description=form.data['input-product-description'],price=form.data['input-product-price'],image_source=form.data['input-product-image-source'])
         newRecord.save()
-    return HttpResponseRedirect("../blog/Search")
+    return HttpResponseRedirect("../blog/search")
 
 @api_view(['POST'])
 def searchForUser(request):
