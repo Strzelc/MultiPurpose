@@ -19,16 +19,16 @@ function createOneProductCard(cardImageSource, cardTitleText, cardTextText) {
 
   const cardImage = document.createElement("img");
   cardImage.setAttribute("src", cardImageSource);
-  cardImage.classList.add("card-image");
+  cardImage.classList.add("card-product-image");
   card.appendChild(cardImage);
 
   const cardTitle = document.createElement("h5");
-  cardTitle.classList.add("card-title");
+  cardTitle.classList.add("card-product-title");
   cardTitle.textContent = cardTitleText;
   card.appendChild(cardTitle);
 
   const cardText = document.createElement("p");
-  cardText.classList.add("card-text");
+  cardText.classList.add("card-product-text");
   cardText.textContent = cardTextText;
   card.appendChild(cardText);
 

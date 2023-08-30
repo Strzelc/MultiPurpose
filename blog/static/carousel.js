@@ -28,7 +28,6 @@ function CreateOneSliderPanel(cardImageSource,cardTitleText,cardTextText) {
     card.appendChild(cardText);
 
     return card;
-
 }
 
 function createSliderPanels(cardsProperties) {
