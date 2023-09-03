@@ -1,8 +1,16 @@
-APIurl = "../API/product-search";
+const APIurl2 = "../API/product-search";
+const SearchForm = document.querySelector('#formElem');
 
-function searchForProduct() {
+function searchForProduct(form) {
   
-  fetch(APIurl)
+  fetch(url=APIurl2,{method: "POST", body:JSON.stringify({
+    body:document.querySelector('#input-form-product-name')
+
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  }}
+  )
     .then((response) => {
       return (response.ok) ? response.json() : null
     })
@@ -38,16 +46,16 @@ function createOneProductCard(cardImageSource, cardTitleText, cardTextText) {
 function createProductsCards(cardsProperties) {
   if (cardsProperties == null) {
     const card = CreateOneSliderPanel(ImgsRootPath + "default.jpg", "Title", "Lorem ipsum");
-    slider.appendChild(card);
+    SearchForm.appendChild(card);
   }
   else {
     cardsProperties.forEach(element => {
       const card = CreateOneSliderPanel(element[0], element[1], element[2]);
-      slider.appendChild(card);
+      SearchForm.appendChild(card);
     });
   }
 };
 
 /////////////////////////////////
 //Execution starts here
-searchForProduct()
+//make button OnClick haandler which handles submiting form
