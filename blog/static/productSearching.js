@@ -1,11 +1,10 @@
 const APIurl2 = "../API/product-search";
-const SearchForm = document.querySelector('#formElem');
 
 function searchForProduct(form) {
-  
+  console.log(form);
   fetch(url=APIurl2,{method: "POST", body:JSON.stringify({
-    body:document.querySelector('#input-form-product-name')
-
+    form
+    
   }),
   headers: {
     'Content-type': 'application/json; charset=UTF-8',
@@ -18,6 +17,19 @@ function searchForProduct(form) {
       createProductsCards(data);
     })
     
+};
+
+function createProductsCards(cardsProperties) {
+  if (cardsProperties == null) {
+    const card = CreateOneSliderPanel(ImgsRootPath + "default.jpg", "Title", "Lorem ipsum");
+    SearchForm.appendChild(card);
+  }
+  else {
+    cardsProperties.forEach(element => {
+      const card = CreateOneSliderPanel(element[0], element[1], element[2]);
+      SearchForm.appendChild(card);
+    });
+  }
 };
 
 function createOneProductCard(cardImageSource, cardTitleText, cardTextText) {
@@ -43,19 +55,3 @@ function createOneProductCard(cardImageSource, cardTitleText, cardTextText) {
   return card;
 };
 
-function createProductsCards(cardsProperties) {
-  if (cardsProperties == null) {
-    const card = CreateOneSliderPanel(ImgsRootPath + "default.jpg", "Title", "Lorem ipsum");
-    SearchForm.appendChild(card);
-  }
-  else {
-    cardsProperties.forEach(element => {
-      const card = CreateOneSliderPanel(element[0], element[1], element[2]);
-      SearchForm.appendChild(card);
-    });
-  }
-};
-
-/////////////////////////////////
-//Execution starts here
-//make button OnClick haandler which handles submiting form
