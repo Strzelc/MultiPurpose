@@ -27,7 +27,15 @@ def searchForProduct(request):
         print("req.POST: \n"+str(request.POST))
         form = ProductSearchForm(request.POST)
         print("form: \n"+ str(form))
-
+        print("form input data : \n"+ str(form.data['input-product-name']))
+        
+        foundProducts = Product.objects.filter(name__contains=form.data['input-product-name'])
+        productsData={"image_source":[],"name":[],"description":[]}
+        for product in foundProducts:
+            productsData["image_source"].append(product.image_source)
+            productsData["name"].append(product.name)
+            productsData["description"].append(product.description)
+        Response(productsData)
     else:
         return Response()
 
