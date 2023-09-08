@@ -54,7 +54,7 @@
     transition: all 0.3s;
 }
 
-.card {
+.blog-card {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
@@ -65,8 +65,11 @@
     text-align: center;
 }
 
-.irregular-card {
+.product-card {
+    
+    text-align: center;
     display: block;
+    border: 1px solid red;
 }
 
 .card-text {

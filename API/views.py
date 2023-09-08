@@ -24,10 +24,10 @@ def getCardData(request):
 @api_view(['POST'])
 def searchForProduct(request):
     if (request.method=='POST'):
-        print("req.POST: \n"+str(request.POST))
-        form = ProductSearchForm(request.POST)
-        print("form: \n"+ str(form))
-        print("form input data : \n"+ str(form.data['input-product-name']))
+        print("req.POST: \n"+str(request.body))
+        form = ProductSearchForm(request.body)
+        #print("form: \n"+ str(form))
+        #print("form input data : \n"+ str(form.data['input-product-name']))
         
         foundProducts = Product.objects.filter(name__contains=form.data['input-product-name'])
         productsData={"image_source":[],"name":[],"description":[]}

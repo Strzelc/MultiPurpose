@@ -2,11 +2,16 @@ const APIurlProductSearch = "../API/product-search";
 
 function searchForProduct(form) {
   console.log(form);
-  var asss=new FormData(form);
+  
+  var formData=new FormData(form);
+  console.log(JSON.stringify(Object.fromEntries(formData.entries())));
+  
   fetch(url=APIurlProductSearch, {
-    body: new FormData(form),
+    
+    body:JSON.stringify(Object.fromEntries(formData.entries())),
     headers: {
-    'Content-type': 'multipart/form-data;boundary=sdbsdgsag123',
+    'Content-type':  'application/json'
+    
     },
     method: "POST"
   })
