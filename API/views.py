@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from blog.forms import ProductSearchForm
 from blog.models import Product
+import json
 
 ImgsRootPath = "../static/images/"
 
@@ -24,18 +25,20 @@ def getCardData(request):
 @api_view(['POST'])
 def searchForProduct(request):
     if (request.method=='POST'):
-        print("req.POST: \n"+str(request.body))
-        form = ProductSearchForm(request.body)
-        #print("form: \n"+ str(form))
+        print("req.body: \n"+str(request.body))
+        print("JSON: \n"+ str(json.loads(request.body)))
+        form = ProductSearchForm(json.loads(request.body))
+        print("form: \n"+ str(form))
         #print("form input data : \n"+ str(form.data['input-product-name']))
-        
+        print("form product name: \n"+ str(form.data['input-product-name']))
         foundProducts = Product.objects.filter(name__contains=form.data['input-product-name'])
-        productsData={"image_source":[],"name":[],"description":[]}
+        productsData={"name":[],"description":[],"image_source":[]}
         for product in foundProducts:
-            productsData["image_source"].append(product.image_source)
+            productsData["image_source"].append(ImgsRootPath+product.image_source)
             productsData["name"].append(product.name)
             productsData["description"].append(product.description)
-        Response(productsData)
+        print("resp: \n"+str(productsData))    
+        return Response(productsData)
     else:
         return Response()
 
