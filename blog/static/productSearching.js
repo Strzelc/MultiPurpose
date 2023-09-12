@@ -27,7 +27,8 @@ function createProductsCards(cardsProperties) {
     SearchForm.appendChild(card);
   }
   else {
-    console.log(cardsProperties);
+    if(SearchForm.childElementCount>0)
+      SearchForm.replaceChildren();
     for(var i =0; i<cardsProperties["name"].length;i++ ){
       const card = createOneProductCard(cardsProperties["name"][i],cardsProperties["description"][i],cardsProperties["image_source"][i]); 
       SearchForm.appendChild(card);

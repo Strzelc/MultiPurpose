@@ -1,39 +1,51 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="../static/style.css">
-        
-    </head>
-    <body>
-        
-        <div class="main-wrapper">
-            <div class="carousel"></div>
-            <script src="../static/carousel.js"></script>
-            
-            <section class="searching-product">
-                <h1 style="text-align: center;">Product search</h1>
-                <form method="post" action="../API/product-search" id="formElem">
-                    <input type="text" id="input-form-product-name" name = "input-product-name"> 
-                    
-                    <button type="button" onclick="searchForProduct(formElem)">Search JS</button>
-                    <button type="submit" >Search DJ</button>
-                </form>
-                <section class="searching-result">
-                </section>
-                <h1 style="text-align: center;">Add product!</h1>
 
-                <form  method="post" action="../API/add-product">
-                    <label for="">Name:</label>
-                    <input type="text" name="input-product-name" id="input-product-name">
-                    <label for="">Price:</label>
-                    <input type="text" name="input-product-price" id="">
-                    <label for="">Description:</label>
-                    <input type="text" name="t-product-description" id="">
-                    <label for="">Image src:</label>
-                    <input type="text" name="input-product-image-source" id="">
-                    <button type="submit">Add</butinputon>
-                </form>
-                <script src="../static/productSearching.js"></script>
-            </section>  
-        </div>   
-    </body>
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <div class="top-bar">
+            <h2>
+                <a href="/blog">Home</a>
+                <a href="search">Search for product</a>
+                <a href="login">Sign in</a>
+            </h2>
+
+        </div>
+        <div class="carousel"></div>
+        <script src="../static/carousel.js"></script>
+
+
+        <section class="searching-product">
+            <h1 style="text-align: center;">Product search</h1>
+            <form method="post" action="../API/product-search" id="formElem">
+                <input type="text" id="input-form-product-name" name="input-product-name">
+
+                <button type="button" onclick="searchForProduct(formElem)">Search JS</button>
+                <button type="submit">Search DJ</button>
+            </form>
+            <section class="searching-result"></section>
+        </section>
+        <section class="adding-product">
+            <h1 style="text-align: center;">Add product!</h1>
+            <form method="post" action="../API/add-product">
+                <label for="">Name:</label>
+                <input type="text" name="input-product-name" id="input-product-name">
+                <label for="">Price:</label>
+                <input type="text" name="input-product-price" id="">
+                <label for="">Description:</label>
+                <input type="text" name="t-product-description" id="">
+                <label for="">Image src:</label>
+                <input type="text" name="input-product-image-source" id="">
+                <button type="submit">Add</butinputon>
+            </form>
+            <script src="../static/productSearching.js"></script>
+        </section>
+    </div>
+</body>
+
 </html>
