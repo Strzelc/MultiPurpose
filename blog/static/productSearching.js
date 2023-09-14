@@ -1,7 +1,11 @@
 const APIurlProductSearch = "../API/product-search";
-const SearchForm = document.querySelector('.searching-result');
+const HTML_SearchFormElement = document.querySelector('.searching-result');
 
 function searchForProduct(form) {
+  const loadingCircle = document.createElement("div");
+  loadingCircle.classList.add("loading-circle-animated");
+  HTML_SearchFormElement.appendChild(loadingCircle);
+  
   var formData=new FormData(form);
   fetch(url=APIurlProductSearch, {
     
@@ -24,14 +28,14 @@ function searchForProduct(form) {
 function createProductsCards(cardsProperties) {
   if (cardsProperties == null) {
     const card = CreateOneSliderPanel(ImgsRootPath + "default.jpg", "Title", "Lorem ipsum");
-    SearchForm.appendChild(card);
+    HTML_SearchFormElement.appendChild(card);
   }
   else {
-    if(SearchForm.childElementCount>0)
-      SearchForm.replaceChildren();
+    if(HTML_SearchFormElement.childElementCount>0)
+      HTML_SearchFormElement.replaceChildren();
     for(var i =0; i<cardsProperties["name"].length;i++ ){
       const card = createOneProductCard(cardsProperties["name"][i],cardsProperties["description"][i],cardsProperties["image_source"][i]); 
-      SearchForm.appendChild(card);
+      HTML_SearchFormElement.appendChild(card);
     }
   }
 };

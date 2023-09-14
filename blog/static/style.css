@@ -130,19 +130,70 @@ body{
 
 .login-container {
     align-content: center;
-    margin: 10px
+    margin: 10px;
 }
 
 .password-container {
     align-content: center;
-    margin: 10px
+    margin: 10px;
 }
 
 .top-bar {
-    overflow: hidden;
+    display:flex;
     position: fixed;
     top: 0;
     height: 70px;
     width: 100%;
     background-color: #918f8f;
 }
+
+.top-bar-text {
+    margin-right: 10px;
+    
+}
+
+.top-bar-input-text{
+    margin-top: 17.5px;
+    height:30px;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to { 
+        transform: rotate(360deg);
+    }
+}
+ 
+
+ @-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to { 
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.loading-circle-animated {
+	width: 70px;
+	height: 70px;
+	margin: 10px auto 0;
+	border:solid 10px #8822aa;
+	border-radius: 50%;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	 -webkit-transition: all 0.5s ease-in;
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         1.0s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+    	
+    	 transition: all 0.5s ease-in;
+    animation-name:             rotate; 
+    animation-duration:         1.0s; 
+    animation-iteration-count:  infinite;
+    animation-timing-function: linear; 
+}
+

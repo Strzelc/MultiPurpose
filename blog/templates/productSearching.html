@@ -9,22 +9,26 @@
 
     <div class="main-wrapper">
         <div class="top-bar">
-            <h2>
+
+            <h2 class="top-bar-text">
                 <a href="/blog">Home</a>
+            </h2>
+            <h2 class="top-bar-text">
                 <a href="search">Search for product</a>
+            </h2>
+            <h2 class="top-bar-text">
                 <a href="login">Sign in</a>
             </h2>
-
+            <input class="top-bar-input-text" type="text" >
         </div>
         <div class="carousel"></div>
         <script src="../static/carousel.js"></script>
-
+        
 
         <section class="searching-product">
             <h1 style="text-align: center;">Product search</h1>
             <form method="post" action="../API/product-search" id="formElem">
                 <input type="text" id="input-form-product-name" name="input-product-name">
-
                 <button type="button" onclick="searchForProduct(formElem)">Search JS</button>
                 <button type="submit">Search DJ</button>
             </form>
