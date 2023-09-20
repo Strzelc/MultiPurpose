@@ -70,10 +70,10 @@ body{
 }
 
 .product-card {
-    
     text-align: center;
     display: block;
     border: 1px solid red;
+    animation: slide-up 0.4s ease;
 }
 
 .card-text {
