@@ -66,8 +66,13 @@ def searchForUser(request):
 def registerUser(request):
     if(request.method=='POST'):
         params = request.POST
-        user = User.objects.create_user(request.POST.get('username',False), request.POST.get('email',False), request.POST.get('password',False))
-        user.save()
-        return Response("OK")
+        #validation
+        try:
+            if(params["login"].lenght>2 & params["password"].lenght>2 & params["email"].lenght>2):
+                    user = User.objects.create_user(params["login"], params["email"], params["password"])
+                    user.save()
+                    return Response("OK")
+        except:
+            return Response("Bad request")
     else:
         return Response("Bad request")

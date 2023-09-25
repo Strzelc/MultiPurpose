@@ -197,3 +197,7 @@ body{
     animation-timing-function: linear; 
 }
 
+.sign-up-container input:invalid {
+    border: 2px dashed red;
+  }
+

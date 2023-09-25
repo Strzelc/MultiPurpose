@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body>
+        <h1></h1>
+        <div class="main-wrapper">
+            <div class="sign-up-container">
+                <iframe name="dummyFrame" id="dummyFrame" style="display: none;"></iframe>
+                <form action="../API/registration" method="POST" target="dummyframe">
+                    <div class="login-container">
+                        <label for="">Login</label>
+                        <input type="text" name="login" id="input-login" required minlength="3" >
+                    </div>
+                    <div class="password-container"> 
+                        <label for="">Password</label>
+                        <input type="text"  name="password" id="input-password" required minlength="3">
+                    </div>
+                    <div class="password-container"> 
+                        <label for="">Repeat password</label>
+                        <input type="text" name="password-2" id="input-password" required minlength="3"> 
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        
+    </body>
+</html>

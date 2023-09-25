@@ -47,7 +47,7 @@ function createOneProductCard(cardTitleText, cardTextText,cardImageSource) {
 
   const cardImage = document.createElement("img");
   cardImage.setAttribute("src", cardImageSource);
-  cardImage.classList.add("card--image");
+  cardImage.classList.add("card-image");
   card.appendChild(cardImage);
 
   const cardTitle = document.createElement("h5");
