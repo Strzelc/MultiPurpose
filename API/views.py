@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from blog.forms import ProductSearchForm
 from blog.models import Product
 import json
+from common.utilities import checkEmailSpelling
 
 ImgsRootPath = "../static/images/"
 
@@ -68,11 +69,18 @@ def registerUser(request):
         params = request.POST
         #validation
         try:
-            if(params["login"].lenght>2 & params["password"].lenght>2 & params["email"].lenght>2):
+            print(params)
+            print(len(params["login"]))
+            print(len(params["password"]))
+            print(len(params["email"]))
+            if(len(params["login"])>2 and len(params["password"]) > 2 and checkEmailSpelling(params["email"])):
                     user = User.objects.create_user(params["login"], params["email"], params["password"])
                     user.save()
-                    return Response("OK")
+                    return Response("OK") 
+            else:
+                return Response("Credentials don't meet the requirements")
         except:
-            return Response("Bad request")
+            return Response("Error. Bad request")
+        
     else:
         return Response("Bad request")

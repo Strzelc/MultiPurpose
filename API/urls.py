@@ -3,7 +3,7 @@ from . import views
 urlpatterns = [
     path('carousel',views.getCardData),
     path('product-search',views.searchForProduct),
-    path('registration', views.registerUser),
+    path('user-registration', views.registerUser),
     path('login', views.searchForUser),
     path('add-product', views.addProduct),
 ]
