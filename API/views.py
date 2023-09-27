@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from blog.forms import ProductSearchForm
 from blog.models import Product
 import json
-from common.utilities import checkEmailSpelling
+from common.utilities import checkEmailSpelling, checkPasswordSpelling
 
 ImgsRootPath = "../static/images/"
 
@@ -68,19 +68,29 @@ def registerUser(request):
     if(request.method=='POST'):
         params = request.POST
         #validation
-        try:
-            print(params)
-            print(len(params["login"]))
-            print(len(params["password"]))
-            print(len(params["email"]))
-            if(len(params["login"])>2 and len(params["password"]) > 2 and checkEmailSpelling(params["email"])):
-                    user = User.objects.create_user(params["login"], params["email"], params["password"])
-                    user.save()
-                    return Response("OK") 
-            else:
-                return Response("Credentials don't meet the requirements")
-        except:
-            return Response("Error. Bad request")
+        #try:
+        print(params)
+        print(len(params["login"]))
+        print(len(params["password"]))
+        print(len(params["email"]))
+        if(len(params["login"])>2 and checkPasswordSpelling(password=params["password"], userType="Client") and checkEmailSpelling(params["email"])):
+                
+                duplicateUser = User.objects.filter(username=params["login"]).get()
+                
+                if(duplicateUser is None):
+                    duplicateUser = User.objects.filter(email=params["email"]).get()
+                    if(duplicateUser is None):
+                        user = User.objects.create_user(params["login"], params["email"], params["password"])
+                        user.save()
+                        return Response("OK") 
+                    else:
+                        return Response("There is already user with that email") 
+                else:
+                    return Response("Username is occupied")
+        else:
+            return Response("Credentials don't meet the requirements")
+        #except:
+            #return Response("Error. Bad request")
         
     else:
         return Response("Bad request")
