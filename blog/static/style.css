@@ -138,6 +138,13 @@ body{
     margin: 10px;
 }
 
+.static-notification {
+    display:flex;
+    position: fixed;
+    height: 70px;
+    width: 100%;
+}
+
 .top-bar {
     display:flex;
     position: fixed;

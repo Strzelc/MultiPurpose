@@ -11,14 +11,18 @@ def checkPasswordSpelling(password,userType):
     file = open("./common/passwordPolicies.json","r")
     passwordPolicies = json.load(file)
     policies=passwordPolicies[userType]
-    policiesCount = len(policies)
+    if(policies["minLength"]["isReq"] is True and len(password) < policies["minLength"]["minLength"]):
+        return False
+    else:
+        policies["minLength"]["isReq"] = False
     for x in password:
         if(policies["specialChar"]["isReq"] is True and x in string.punctuation):
-            print("s")
-            return False
+            policies["specialChar"]["isReq"] = False
         if(policies["number"]["isReq"] is True and x in string.octdigits):
-            print("s")
-            return False
+            policies["number"]["isReq"] = False
         if(policies["upperCaseChar"]["isReq"] is True and x in string.ascii_uppercase):
+            policies["upperCaseChar"]["isReq"] = False
+    for policy in policies:
+        if (policies[policy]["isReq"] is True):
             return False
     return True
