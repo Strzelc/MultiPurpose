@@ -141,6 +141,7 @@ body{
 .static-notification {
     display:flex;
     position: fixed;
+    top: 0;
     height: 70px;
     width: 100%;
 }

@@ -26,19 +26,15 @@ def getCardData(request):
 @api_view(['POST'])
 def searchForProduct(request):
     if (request.method=='POST'):
-        print("req.body: \n"+str(request.body))
-        print("JSON: \n"+ str(json.loads(request.body)))
         form = ProductSearchForm(json.loads(request.body))
-        print("form: \n"+ str(form))
-        #print("form input data : \n"+ str(form.data['input-product-name']))
-        print("form product name: \n"+ str(form.data['input-product-name']))
         foundProducts = Product.objects.filter(name__contains=form.data['input-product-name'])
         productsData={"name":[],"description":[],"image_source":[]}
         for product in foundProducts:
             productsData["image_source"].append(ImgsRootPath+product.image_source)
             productsData["name"].append(product.name)
             productsData["description"].append(product.description)
-        print("resp: \n"+str(productsData))    
+        print("resp: \n"+str(productsData))  
+        print("\n session id: "+str(request.session)  )
         return Response(productsData)
     else:
         return Response()
@@ -74,9 +70,7 @@ def registerUser(request):
         print(len(params["password"]))
         print(len(params["email"]))
         if(len(params["login"])>2 and checkPasswordSpelling(password=params["password"], userType="Client") and checkEmailSpelling(params["email"])):
-                
                 duplicateUser = User.objects.filter(username=params["login"]).get()
-                
                 if(duplicateUser is None):
                     duplicateUser = User.objects.filter(email=params["email"]).get()
                     if(duplicateUser is None):

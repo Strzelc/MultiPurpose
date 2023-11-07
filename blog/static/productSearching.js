@@ -12,7 +12,6 @@ function searchForProduct(form) {
     body:JSON.stringify(Object.fromEntries(formData.entries())),
     headers: {
     'Content-type':  'application/json'
-    
     },
     method: "POST"
   })
@@ -20,7 +19,15 @@ function searchForProduct(form) {
       return (response.ok) ? response.json() : null
     })
     .then((data) => {
-      createProductsCards(data);
+      HTML_SearchFormElement.replaceChildren();
+      if(data["name"].length!=0)
+        createProductsCards(data);
+      else
+      {
+        const noProductNotification = document.createElement("p");
+        noProductNotification.innerHTML+="No product found!";
+        HTML_SearchFormElement.appendChild(noProductNotification);
+      }
     })
     
 };
@@ -31,8 +38,8 @@ function createProductsCards(cardsProperties) {
     HTML_SearchFormElement.appendChild(card);
   }
   else {
-    if(HTML_SearchFormElement.childElementCount>0)
-      HTML_SearchFormElement.replaceChildren();
+    //if(HTML_SearchFormElement.childElementCount>0)
+    //HTML_SearchFormElement.replaceChildren();
     for(var i =0; i<cardsProperties["name"].length;i++ ){
       const card = createOneProductCard(cardsProperties["name"][i],cardsProperties["description"][i],cardsProperties["image_source"][i]); 
       HTML_SearchFormElement.appendChild(card);
